@@ -7,13 +7,13 @@
 
 
 
- * TODO: Display the guess history using displayHistory() function
+
  * TODO: Use the initGame() function to restart the game
  */
 
 
 let guesses = [];
-let correctNumber = this.getRandomNumber();
+let correctNumber = getRandomNumber();
 
 window.onload = function() {
     document.getElementById("number-submit").addEventListener("click", playGame);
@@ -25,7 +25,7 @@ function playGame() {
   let numberGuess = document.getElementById("number-guess").value;
   displayResult(numberGuess);
   saveGuessHistory(numberGuess);
-  displayHistory(numberGuess);
+  displayHistory();
   
 }
 
@@ -41,22 +41,17 @@ function displayResult(numberGuess) {
   }
 }
 
-
-/**
- * Initialize a new game by resetting all values and content on the page
- * HINT: reset the correctNumber, guesses, and HTML content
- */
 function initGame(){
-  // *CODE GOES BELOW HERE *
+  correctNumber = getRandomNumber();
+  guesses = [];
+  document.getElementById("result").innerHTML = "";
+  displayHistory();
+
 }
 
-/**
- * Reset the HTML content for guess history
- */
 function resetResultContent(){
   document.getElementById("result").innerHTML = "";
 }
-
 
 function getRandomNumber() {
   let randomNumber = Math.floor(Math.random() * 100) + 1;
@@ -64,20 +59,11 @@ function getRandomNumber() {
   return randomNumber;
 }
 
-
 function saveGuessHistory(guess) {
   guesses.push(guess)
   console.log(guesses)
 }
 
-/**
- * Display guess history to user
- * HTML TO USE:
- * <ul class='list-group'>
- *  <li class='list-group-item'>You guessed {number}</li
- * </ul>
- * HINT: use while loop and string concatentation to create a list of guesses
- */
 function displayHistory() {
   let index = guesses.length - 1; // TODO
   let list = "<ul class='list-group'>";
