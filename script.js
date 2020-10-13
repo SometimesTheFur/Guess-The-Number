@@ -6,14 +6,13 @@
 
 
 
- * TODO: Save the guess history in a variable called guess
+
  * TODO: Display the guess history using displayHistory() function
  * TODO: Use the initGame() function to restart the game
  */
 
-// Variable to store the list of guesses 
 
-// Variable for store the correct random number 
+let guesses = [];
 let correctNumber = this.getRandomNumber();
 
 window.onload = function() {
@@ -24,8 +23,9 @@ window.onload = function() {
 
 function playGame() {
   let numberGuess = document.getElementById("number-guess").value;
-  console.log(numberGuess);
-  displayResult(numberGuess)
+  displayResult(numberGuess);
+  saveGuessHistory(numberGuess);
+  displayHistory(numberGuess);
   
 }
 
@@ -64,13 +64,10 @@ function getRandomNumber() {
   return randomNumber;
 }
 
-/**
- * Save guess history 
- * HINT: Search Google "append to array in javascript"
- * HINT: Use the guesses variable
- */
+
 function saveGuessHistory(guess) {
-  // *CODE GOES BELOW HERE *
+  guesses.push(guess)
+  console.log(guesses)
 }
 
 /**
@@ -82,18 +79,18 @@ function saveGuessHistory(guess) {
  * HINT: use while loop and string concatentation to create a list of guesses
  */
 function displayHistory() {
-  let index; // TODO
+  let index = guesses.length - 1; // TODO
   let list = "<ul class='list-group'>";
-  // *CODE GOES BELOW HERE *
-  list += '</ul>'
+  
+  while (index >= 0) {
+      list += "<li class='list-group-item'>" +
+      "You guessed " + guesses[index] +
+      "</li>"
+      index-=1;
+  }list += '</ul>'
   document.getElementById("history").innerHTML = list;
 }
 
-
-
-/**
- * Retrieve the dialog based on if the guess is wrong or correct 
- */
 function getDialog(dialogType, text){
   let dialog;
   switch(dialogType){
