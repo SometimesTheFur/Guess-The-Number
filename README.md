@@ -1,0 +1,1 @@
+A fun and simple Excercise in JS while between bigger React projects.
