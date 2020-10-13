@@ -1,17 +1,3 @@
-/**
- * Guess The Number Game
- 
-
-
-
-
-
-
-
- * TODO: Use the initGame() function to restart the game
- */
-
-
 let guesses = [];
 let correctNumber = getRandomNumber();
 
